@@ -12,7 +12,6 @@ function DecryptPasswordOnWorker(password, field) {
 
 function OnCipherInputChange() {
   const CipherInputField = document.getElementById("CipherInputField").value;
-  // Langsung panggil fungsi Decrypt karena tidak ada pilihan lain
   DecryptPasswordOnWorker(
     he.decode(CipherInputField.trim()),
     "CipherResultField"
@@ -21,7 +20,6 @@ function OnCipherInputChange() {
 
 myWorker.addEventListener("message", (e) => {
   switch (e.data.functionCall) {
-    // Hanya case DECRYPT_DATA yang dibutuhkan sekarang
     case DECRYPT_DATA:
       let field = document.getElementById(e.data.field);
       field.value = e.data.return;
@@ -29,7 +27,6 @@ myWorker.addEventListener("message", (e) => {
   }
 });
 
-// Hapus referensi 'passgen' dari array pages
 const pages = ["home", "cipher"];
 
 function popStateEvent(e) {
@@ -49,7 +46,6 @@ function popStateEvent(e) {
   });
 }
 
-// Initial calls
 OnCipherInputChange();
 window.addEventListener("popstate", popStateEvent);
 popStateEvent();
