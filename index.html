@@ -29,8 +29,7 @@
       <nav>
         <ul>
           <li><a href="#home" id="homelink">Home</a></li>
-          <li><a href="#passgen" id="passgenlink">Password Generator</a></li>
-          <li><a href="#cipher" id="cipherlink">Cipher/Decipher</a></li>
+          <li><a href="#cipher" id="cipherlink">Decipher</a></li>
         </ul>
       </nav>
     </header>
@@ -42,9 +41,7 @@
           <p>
             This is a simple web page by
             <a href="https://blog.fayaru.me">Fayaru</a> with a couple of utility
-            functions for Huawei routers. Currently it supports hashing
-            passwords with several pass modes as well as encrypting "password"
-            strings in the configuration file.
+            functions for Huawei routers.
           </p>
           <p>
             If you wish to know more, you can read my writeup
@@ -59,112 +56,29 @@
         </div>
       </div>
 
-      <div id="passgen" style="display: none">
-        <div class="card">
-          <h1>Password Generator</h1>
-          <div class="form-group">
-            <label for="PasswordField">Password to hash:</label>
-            <input
-              id="PasswordField"
-              class="user-input"
-              placeholder="Enter password"
-              type="text"
-              oninput="OnPasswordChange()"
-            />
-          </div>
-          <div class="form-group">
-            <label for="EncryptionMode">Encrypt Mode:</label>
-            <select
-              id="EncryptionMode"
-              name="hashing"
-              class="user-input"
-              onchange="EncryptionModeChange()"
-            >
-              <option value="1">1. MD5(password)</option>
-              <option value="2">2. Sha256(MD5(password))</option>
-              <option value="3">3. PBKDF2(password, salt, ...)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="SaltField">Salt:</label>
-            <div class="input-with-checkbox">
-              <input
-                id="SaltField"
-                class="user-input"
-                placeholder="salt"
-                type="text"
-                oninput="OnPasswordChange()"
-              />
-              <div class="checkbox-container">
-                <input
-                  type="checkbox"
-                  id="SaltRandomizeField"
-                  onclick="OnRandomizeFieldChange()"
-                  checked
-                />
-                <label for="SaltRandomizeField">Randomize</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="ResultField">Result:</label>
-            <div class="input-with-checkbox">
-              <input
-                id="ResultField"
-                class="user-input no-input"
-                placeholder="result"
-                type="text"
-                disabled
-              />
-              <div class="checkbox-container">
-                <input
-                  type="checkbox"
-                  id="EncryptResultField"
-                  onclick="OnEncryptResultClick()"
-                  checked
-                />
-                <label for="EncryptResultField">Encrypt</label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div id="cipher" style="display: none">
         <div class="card">
-          <h1>Cipher / Decipher</h1>
+          <h1>Decipher String</h1>
           <p class="description">
-            Cipher and decipher strings with the same method as Huawei uses in
-            their configuration.
+            Decipher strings with the same method as Huawei uses in their
+            configuration.
           </p>
           <div class="form-group">
-            <label for="CipherInputField">Input:</label>
+            <label for="CipherInputField">Encrypted String to Decipher:</label>
             <input
               id="CipherInputField"
               class="user-input"
-              placeholder="Enter input string"
+              placeholder="Enter encrypted string"
               type="text"
               oninput="OnCipherInputChange()"
             />
           </div>
           <div class="form-group">
-            <label for="CipherFunctionField">Function:</label>
-            <select
-              id="CipherFunctionField"
-              name="cipherfunction"
-              class="user-input"
-              onchange="OnCipherInputChange()"
-            >
-              <option value="1">Decipher</option>
-              <option value="2">Cipher</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="CipherResultField">Result:</label>
+            <label for="CipherResultField">Result (Deciphered):</label>
             <input
               id="CipherResultField"
               class="user-input no-input"
-              placeholder="result"
+              placeholder="Result will appear here"
               type="text"
               disabled
             />
